@@ -91,15 +91,6 @@ npm run dev
 # API:    http://localhost:5001
 ```
 
-### 5. Run with Docker Compose (non-Vercel deploy)
-```bash
-cp .env.example .env
-docker compose up --build
-```
-
-- App: http://localhost:5001
-- Mongo: mongodb://localhost:27017
-
 ---
 
 ## 🔌 API Endpoints
