@@ -1,0 +1,102 @@
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 56px;
+  background: linear-gradient(to bottom, rgba(8,6,4,0.95), transparent);
+  transition: all 0.4s ease;
+}
+.navbar.scrolled {
+  background: rgba(8,6,4,0.97);
+  padding: 18px 56px;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+}
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+}
+.nav-links {
+  display: flex;
+  gap: 44px;
+  list-style: none;
+  align-items: center;
+}
+.nav-links a, .nav-btn {
+  font-weight: 200;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  transition: color 0.3s;
+  background: none;
+  border: none;
+  font-family: 'Raleway', sans-serif;
+}
+.nav-links a:hover, .nav-btn:hover { color: var(--gold-light); }
+.nav-right { display: flex; align-items: center; gap: 20px; }
+.nav-cart-btn {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 200;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s;
+}
+.nav-cart-btn:hover { color: var(--gold); }
+.cart-badge {
+  background: var(--gold);
+  color: var(--black);
+  font-size: 0.55rem;
+  font-weight: 600;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 22px; height: 1px;
+  background: var(--gold);
+  transition: all 0.3s;
+}
+
+@media (max-width: 900px) {
+  .navbar { padding: 20px 24px; }
+  .navbar.scrolled { padding: 14px 24px; }
+  .hamburger { display: flex; }
+  .nav-links {
+    position: fixed;
+    top: 0; right: -100%;
+    width: 280px; height: 100vh;
+    background: rgba(8,6,4,0.98);
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    border-left: 1px solid rgba(201,168,76,0.15);
+    transition: right 0.4s ease;
+    padding: 60px 40px;
+  }
+  .nav-links.open { right: 0; }
+  .nav-links a, .nav-btn { font-size: 0.85rem; }
+}

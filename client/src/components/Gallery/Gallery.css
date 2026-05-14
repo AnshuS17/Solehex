@@ -1,0 +1,76 @@
+.gallery {
+  padding: 120px 0 140px;
+  background: var(--deep);
+  overflow: hidden;
+}
+.gallery-header {
+  padding: 0 8vw;
+  margin-bottom: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.gallery-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+}
+.gallery-count {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--gold-dim);
+  font-size: 1rem;
+}
+.gallery-strip {
+  display: flex;
+  gap: 3px;
+  padding: 0 8vw;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.gallery-strip::-webkit-scrollbar { display: none; }
+.gallery-item {
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+  height: 440px;
+  transition: flex 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.gi-1 { flex: 1.2; min-width: 200px; }
+.gi-2 { flex: 0.8; min-width: 160px; }
+.gi-3 { flex: 1.5; min-width: 220px; }
+.gi-4 { flex: 1; min-width: 180px; }
+.gallery-item.active { flex: 2.2; }
+
+.gallery-box {
+  width: 100%; height: 100%;
+  position: relative;
+  transition: transform 0.6s ease;
+}
+.gallery-item:hover .gallery-box { transform: scale(1.03); }
+
+.gallery-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 24px 20px;
+  background: linear-gradient(to top, rgba(8,6,4,0.8), transparent);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: rgba(201,168,76,0.7);
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+
+@media (max-width: 900px) {
+  .gallery { padding: 80px 0 100px; }
+  .gallery-item { height: 320px; }
+  .gi-1 { min-width: 220px; }
+  .gi-2 { min-width: 170px; }
+  .gi-3 { min-width: 260px; }
+  .gi-4 { min-width: 200px; }
+}

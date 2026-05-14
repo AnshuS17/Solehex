@@ -1,0 +1,97 @@
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: var(--black);
+}
+.auth-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 70% at 30% 40%, rgba(107,15,26,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 70% 70%, rgba(201,168,76,0.05) 0%, transparent 55%);
+}
+.auth-box {
+  position: relative; z-index: 1;
+  width: 420px;
+  padding: 56px 52px;
+  background: var(--charcoal);
+  border: 1px solid rgba(201,168,76,0.15);
+}
+.auth-logo {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 12px;
+}
+.auth-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--gold-dim);
+  text-align: center;
+  margin-bottom: 36px;
+}
+.auth-toggle {
+  display: flex;
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  margin-bottom: 36px;
+}
+.auth-toggle button {
+  flex: 1;
+  background: none;
+  border: none;
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  padding: 12px;
+  border-bottom: 1px solid transparent;
+  margin-bottom: -1px;
+  transition: all 0.3s;
+}
+.auth-toggle button.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+.auth-error {
+  background: rgba(107,15,26,0.3);
+  border: 1px solid rgba(107,15,26,0.5);
+  color: #ff8a8a;
+  font-size: 0.75rem;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+}
+.auth-form { display: flex; flex-direction: column; gap: 24px; }
+.auth-field { display: flex; flex-direction: column; gap: 8px; }
+.auth-field label {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+.auth-field input {
+  background: rgba(8,6,4,0.5);
+  border: 1px solid rgba(201,168,76,0.2);
+  color: var(--cream);
+  padding: 14px 16px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.auth-field input:focus { border-color: rgba(201,168,76,0.5); }
+.auth-submit { width: 100%; margin-top: 8px; }
+.auth-submit:disabled { opacity: 0.6; }
+
+@media (max-width: 500px) {
+  .auth-box { width: 100vw; padding: 48px 28px; }
+}

@@ -1,0 +1,57 @@
+const User = require('../models/User');
+
+// @GET /api/cart
+const getCart = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).populate('cart.product');
+    res.json(user.cart);
+  } catch (err) { res.status(500).json({ message: err.message }); }
+};
+
+// @POST /api/cart
+const addToCart = async (req, res) => {
+  try {
+    const { productId, quantity = 1 } = req.body;
+    const user = await User.findById(req.user._id);
+    const existingItem = user.cart.find(i => i.product.toString() === productId);
+    if (existingItem) {
+      existingItem.quantity += quantity;
+    } else {
+      user.cart.push({ product: productId, quantity });
+    }
+    await user.save();
+    const updated = await User.findById(req.user._id).populate('cart.product');
+    res.json(updated.cart);
+  } catch (err) { res.status(500).json({ message: err.message }); }
+};
+
+// @PUT /api/cart/:productId
+const updateCartItem = async (req, res) => {
+  try {
+    const { quantity } = req.body;
+    const user = await User.findById(req.user._id);
+    const item = user.cart.find(i => i.product.toString() === req.params.productId);
+    if (!item) return res.status(404).json({ message: 'Item not in cart' });
+    if (quantity <= 0) {
+      user.cart = user.cart.filter(i => i.product.toString() !== req.params.productId);
+    } else {
+      item.quantity = quantity;
+    }
+    await user.save();
+    const updated = await User.findById(req.user._id).populate('cart.product');
+    res.json(updated.cart);
+  } catch (err) { res.status(500).json({ message: err.message }); }
+};
+
+// @DELETE /api/cart/:productId
+const removeFromCart = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    user.cart = user.cart.filter(i => i.product.toString() !== req.params.productId);
+    await user.save();
+    const updated = await User.findById(req.user._id).populate('cart.product');
+    res.json(updated.cart);
+  } catch (err) { res.status(500).json({ message: err.message }); }
+};
+
+module.exports = { getCart, addToCart, updateCartItem, removeFromCart };
