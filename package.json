@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Solehex Luxury Perfume - MERN Stack",
   "license": "UNLICENSED",
-  "packageManager": "npm@11.12.1",
   "scripts": {
     "start": "cd server && npm start",
     "build": "cd client && npm install && npm run build",
