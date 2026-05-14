@@ -2,6 +2,7 @@
   "name": "solehex-mern",
   "version": "1.0.0",
   "description": "Solehex Luxury Perfume - MERN Stack",
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd server && npm run dev",

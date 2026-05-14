@@ -1,1 +1,11 @@
 node_modules
+npm-debug.log*
+*.log
+
+.env
+server/.env
+client/.env
+
+client/build
+server/client/build
+server/uploads

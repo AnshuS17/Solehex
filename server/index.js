@@ -26,6 +26,15 @@ app.use('/api', require('./routes/shop'));
 // Health check
 app.get('/api/health', (req, res) => res.json({ status: 'OK', message: 'Solehex API running' }));
 
+// Serve React frontend in production
+const clientBuildPath = path.join(__dirname, '../client/build');
+if (fs.existsSync(clientBuildPath)) {
+  app.use(express.static(clientBuildPath));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(clientBuildPath, 'index.html'));
+  });
+}
+
 // 404
 app.use((req, res) => res.status(404).json({ message: 'Route not found' }));
 
